@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/Chat.js" type="text/javascript" defer></script>
+    <script src="js/UI.js" type="text/javascript" defer></script>
+    <script src="js/app.js" type="text/javascript" defer></script>
+    <title>Chatroom</title>
+</head>
+<body>
+<div class="app">
+    <h1>Chatroom</h1>
+    <section class="group">
+        <div class="inputs select">
+            <select name="rooms" id="rooms" class="select1">
+                <option value="none" selected disabled></option>
+            </select>
+            <label for="rooms" id="roomsLabel">Select a room</label>
+        </div>
+        <div class="inputs name">
+            <input type="text" placeholder=" " class="name" required id="name" name="name">
+            <label for="name">Your name</label>
+        </div>
+    </section>
+    <section class="list">
+        <div class="message">
+            <h3>System</h3>
+            <span>now</span>
+            <p>You should choose a room to start</p>
+        </div>
+    </section>
+    <form class="new-message">
+        <span class="textarea" contenteditable="true" id="messageText"></span>
+        <input type="submit" value="send" name="send" id="sendMessage">
+    </form>
+</div>
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.9.0/date_fns.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyBVCJ0mfb8BtdO1d8eQZbpVlC71BH9zkTE",
+        authDomain: "chatroom-test-5708f.firebaseapp.com",
+        projectId: "chatroom-test-5708f",
+        storageBucket: "chatroom-test-5708f.appspot.com",
+        messagingSenderId: "346728251487",
+        appId: "1:346728251487:web:d1476491ef0e6f2bdb1bea",
+        measurementId: "G-15S1NLTF23"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+</script>
+</html>

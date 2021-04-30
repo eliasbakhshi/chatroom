@@ -1,0 +1,24 @@
+/* --- For make the site responsive  ---*/
+$mobileWidthMax : 575.98px;
+$mobileLandscapeWidthMax : 767.98px;
+$mobileLandscapeWidthMin : 576px;
+$tabletWidthMax : 991.98px;
+$tabletWidthMin : 768px;
+$laptopWidthMax : 1199.98px;
+$laptopWidthMin : 992px;
+$largeDesktopWidthMin : 1200px;
+
+/* Colors */
+$primaryColor: #eeeeee;
+$secondaryColor: white;
+$textColor: black;
+
+
+/* Mixins */
+@mixin transition($properties) {
+  -webkit-transition: $properties;
+  -moz-transition:    $properties;
+  -o-transition:      $properties;
+  transition:         $properties;
+}
+

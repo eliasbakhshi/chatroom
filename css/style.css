@@ -1,0 +1,290 @@
+@charset "UTF-8";
+/* --- For make the site responsive  ---*/
+/* Colors */
+/* Mixins */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+body .app {
+  height: 100vh;
+  width: 60em;
+  padding: 0 2em;
+  background-color: #eeeeee;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+body .app h1 {
+  margin: 1em 0 1.5em 0;
+  color: black;
+}
+body .app .group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+body .app .group .inputs {
+  height: 4em;
+  width: 45%;
+  background-color: white;
+  border-radius: 0.5em 0.5em 0 0;
+  position: relative;
+  border: 0;
+}
+body .app .group .inputs.full-width {
+  width: 100% !important;
+}
+body .app .group .inputs > select {
+  position: relative;
+  width: 100%;
+  height: calc(100% - .7em);
+  margin-top: 0.7em;
+  border: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background-color: transparent;
+  text-indent: 1em;
+  font-size: 1.1em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: black;
+  opacity: 0.9;
+}
+body .app .group .inputs > select:focus, body .app .group .inputs > select:active, body .app .group .inputs > select:hover {
+  outline: none;
+}
+body .app .group .inputs > select.selected + label {
+  top: 25%;
+  opacity: 0.7;
+  font-size: 0.7em;
+  color: black;
+}
+body .app .group .inputs.select::after {
+  content: "►";
+  display: block;
+  position: absolute;
+  top: 1.5em;
+  right: 1em;
+  transform: rotate(90deg);
+  pointer-events: none;
+}
+body .app .group .inputs > input {
+  height: calc(100% - .7em);
+  margin-top: 0.7em;
+  box-sizing: border-box;
+  border: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 100%;
+  text-indent: 1em;
+  font-size: 1.1em;
+  background-color: transparent;
+  color: black;
+  opacity: 0.9;
+}
+body .app .group .inputs > input:focus {
+  outline: none;
+}
+body .app .group .inputs > input:focus + label, body .app .group .inputs > input:not(:placeholder-shown) + label {
+  top: 25%;
+  opacity: 0.7;
+  font-size: 0.7em;
+}
+body .app .group .inputs > label {
+  position: absolute;
+  left: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  font-size: 1em;
+  -webkit-transition: top 500ms, font-size 500ms;
+  -moz-transition: top 500ms, font-size 500ms;
+  -o-transition: top 500ms, font-size 500ms;
+  transition: top 500ms, font-size 500ms;
+}
+body .app .list {
+  background-color: white;
+  width: calc(100% - 2em);
+  height: 80%;
+  overflow-y: scroll;
+  margin: 1em 0;
+  padding: 1em;
+  scrollbar-width: thin;
+}
+body .app .list::-webkit-scrollbar {
+  width: 5px;
+}
+body .app .list::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 1em;
+}
+body .app .list .message {
+  background-color: #eeeeee;
+  margin-bottom: 0.4em;
+  padding: 1em;
+  border-radius: 0 0.5em 0.5em 0;
+  float: left;
+  clear: left;
+}
+body .app .list .message:last-of-type {
+  margin-bottom: 0;
+}
+body .app .list .message > h3 {
+  display: inline-block;
+  margin: 0;
+  opacity: 0.8;
+  color: black;
+}
+body .app .list .message > span {
+  margin: 0 1em;
+  display: inline-block;
+  color: black;
+  opacity: 0.7;
+}
+body .app .list .message > p {
+  margin: 0.5em 0 0 0;
+  color: black;
+}
+body .app .new-message {
+  position: relative;
+  min-height: 3em;
+  max-height: 50%;
+  width: calc(100%);
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 0.5em;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+body .app .new-message .textarea {
+  position: relative;
+  color: #000000;
+  width: calc(90%);
+  max-width: calc(90%);
+  max-height: calc(100% - 2em);
+  min-height: 1em;
+  padding: 1em 0 1em 1em;
+  white-space: break-spaces;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  border: none;
+  background-color: transparent;
+  display: inline-block;
+  scrollbar-width: thin;
+}
+body .app .new-message .textarea[contenteditable]:empty::before {
+  content: "Your Message";
+  color: gray;
+}
+body .app .new-message .textarea::-webkit-scrollbar {
+  display: none;
+}
+body .app .new-message .textarea:focus, body .app .new-message .textarea:active, body .app .new-message .textarea:hover {
+  outline: none;
+}
+body .app .new-message input {
+  text-align: center;
+  vertical-align: center;
+  min-width: 10%;
+  width: 10%;
+  height: 100%;
+  letter-spacing: 3px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  -webkit-transition: font-weight 300ms;
+  -moz-transition: font-weight 300ms;
+  -o-transition: font-weight 300ms;
+  transition: font-weight 300ms;
+}
+body .app .new-message input:hover {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 575.98px) {
+  /* --- For make the site responsive  ---*/
+  /* Colors */
+  /* Mixins */
+  body .app {
+    width: 100%;
+    padding: 0;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  body .app h1 {
+    display: none;
+  }
+  body .app .group {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+  body .app .group .inputs {
+    width: 100%;
+    height: 3em;
+    margin-bottom: 1em;
+  }
+  body .app .group .inputs select {
+    font-size: 0.9em;
+  }
+  body .app .group .inputs select.select::after {
+    content: "►";
+    display: block;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    transform: rotate(90deg);
+    pointer-events: none;
+  }
+  body .app .group .inputs input {
+    font-size: 0.9em;
+  }
+  body .app .new-message {
+    min-height: 4em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  body .app .new-message .textarea {
+    width: 80%;
+    scrollbar-width: none;
+  }
+  body .app .new-message .textarea::-webkit-scrollbar {
+    display: none;
+  }
+  body .app .new-message .textarea:focus, body .app .new-message .textarea:active, body .app .new-message .textarea:hover {
+    outline: none;
+  }
+  body .app .new-message input {
+    min-width: 10%;
+    width: 20%;
+    -webkit-transition: font-size 300ms;
+    -moz-transition: font-size 300ms;
+    -o-transition: font-size 300ms;
+    transition: font-size 300ms;
+  }
+  body .app .new-message input:hover {
+    font-size: 1.1em;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

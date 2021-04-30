@@ -1,0 +1,209 @@
+@import "abstract";
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  .app {
+    height: 100vh;
+    width: 60em;
+    padding: 0 2em;
+    background-color: $primaryColor;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    h1{
+      margin: 1em 0 1.5em 0;
+      color: $textColor;
+    }
+    .group {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .inputs {
+        height: 4em;
+        width: 45%;
+        background-color: $secondaryColor;
+        border-radius: .5em .5em 0 0;
+        position: relative;
+        border: 0;
+        &.full-width {
+          width: 100% !important;
+        }
+
+        > select{
+          position: relative;
+          width: 100%;
+          height: calc(100% - .7em);
+          margin-top: .7em;
+          border: 0;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          background-color: transparent;
+          text-indent: 1em;
+          font-size: 1.1em;
+          -moz-appearance:none;
+          -webkit-appearance:none;
+          appearance:none;
+          color: $textColor;
+          opacity: .9;
+          &:focus, &:active, &:hover {
+            outline: none;
+          }
+          &.selected + label {
+            top: 25%;
+            opacity: .7;
+            font-size: .7em;
+            color: $textColor;
+          }
+        }
+        &.select::after {
+          content: "►";
+          display: block;
+          position: absolute;
+          top: 1.5em;
+          right: 1em;
+          transform: rotate(90deg);
+          pointer-events: none;
+        }
+        > input {
+          height: calc(100% - .7em);
+          margin-top: .7em;
+          box-sizing: border-box;
+          border: 0;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          width: 100%;
+          text-indent: 1em;
+          font-size: 1.1em;
+          background-color: transparent;
+          color: $textColor;
+          opacity: .9;
+          &:focus{
+            outline: none;
+          }
+          &:focus + label, &:not(:placeholder-shown) + label {
+            top: 25%;
+            opacity: .7;
+            font-size: .7em;
+          }
+
+        }
+        > label {
+          position: absolute;
+          left: 1em;
+          top: 50%;
+          transform: translateY(-50%);
+          opacity: 0.5;
+          font-size: 1em;
+          @include transition((top 500ms, font-size 500ms));
+        }
+      }
+    }
+    .list {
+      background-color: $secondaryColor;
+      width: calc(100% - 2em);
+      height: 80%;
+      overflow-y: scroll;
+      margin: 1em 0;
+      padding: 1em;
+      scrollbar-width: thin;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: black;
+        border-radius: 1em;
+      }
+      .message {
+        background-color: $primaryColor;
+        margin-bottom: .4em;
+        padding: 1em;
+        border-radius: 0 .5em .5em 0;
+        float: left;
+        clear: left;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+        > h3 {
+          display: inline-block;
+          margin: 0;
+          opacity: .8;
+          color: $textColor;
+        }
+        > span {
+          margin: 0 1em;
+          display: inline-block;
+          color: $textColor;
+          opacity: .7;
+        }
+        > p {
+          margin: .5em 0 0 0;
+          color: $textColor;
+        }
+      }
+    }
+    .new-message {
+      position: relative;
+      min-height: 3em;
+      max-height: 50%;
+      width: calc(100%);
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $secondaryColor;
+      border-radius: .5em;
+      overflow: hidden;
+      margin-bottom: 1em;
+      .textarea {
+        position: relative;
+        color: #000000;
+        width: calc(90%);
+        max-width: calc(90%);
+        max-height: calc(100% - 2em);
+        min-height: 1em;
+        padding: 1em 0 1em 1em;
+        white-space: break-spaces;
+        overflow-wrap: break-word;
+        overflow-y: scroll;
+        border: none;
+        background-color: transparent;
+        display: inline-block;
+        &[contenteditable]:empty::before {
+          content: "Your Message";
+          color: gray;
+        }
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        scrollbar-width: thin;
+        &:focus, &:active, &:hover {
+          outline: none;
+        }
+      }
+      input{
+        text-align: center;
+        vertical-align: center;
+        min-width: 10%;
+        width: 10%;
+        height: 100%;
+        letter-spacing: 3px;
+        background-color: transparent;
+        border: 0;
+        outline: none;
+        @include transition(font-weight 300ms);
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+@import "style_tablet";
+@import "style_mobile";
